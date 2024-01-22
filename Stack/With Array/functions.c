@@ -47,3 +47,23 @@ void deleteStack(Stack S){
     }
         
 }
+
+int getSizeofStack(const Stack S){
+    int size;
+    size =  S->iTop;
+    return size;
+}
+
+void printStack(const Stack S){
+    for (int i = 0; i < S->iTop; i++)
+    {
+        printf("%c", S->pstart[i]);
+    }
+    
+}
+
+Element getTop(Stack S){
+    Element e;
+    e=S->pstart[S->iTop-1];
+    return e;
+}
