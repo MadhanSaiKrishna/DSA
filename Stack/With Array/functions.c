@@ -8,7 +8,7 @@ Stack createStack(const int max_num_elements){
     Stack S = (Stack)malloc(sizeof(struct ststack));
     assert(S!=NULL);
     S->iMaxElements=max_num_elements;
-    S->pstart = (Element)malloc(max_num_elements*sizeof(Element));
+    S->pstart = (Element*)malloc(max_num_elements*sizeof(Element));
     return S;
 }
 
@@ -55,15 +55,15 @@ int getSizeofStack(const Stack S){
 }
 
 void printStack(const Stack S){
-    for (int i = 0; i < S->iTop; i++)
+    for (int i = 0; i <= S->iTop; i++)
     {
-        printf("%c", S->pstart[i]);
+        printf("%c\n", S->pstart[i]);
     }
     
 }
 
 Element getTop(Stack S){
     Element e;
-    e=S->pstart[S->iTop-1];
+    e=S->pstart[S->iTop];
     return e;
 }
