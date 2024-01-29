@@ -6,7 +6,7 @@ typedef int Element;
 
 struct node
 {
-    int data;
+    Element data;
     struct Node *next;
 };
 
@@ -17,7 +17,6 @@ struct stQueue{
     Node Front;
     Node Rear;
     int size;
-    Element* QArray;
 };
 
 typedef struct stQueue* Queue;
@@ -56,4 +55,39 @@ void Enque(Element x, Queue q){
         q->Rear = temp;
     }  
     q->size= q->size+1;  
+}
+
+int isFull(Queue q){
+    int fulled;
+    if (q->size==q->Capacity)
+    {
+        fulled = 1;
+    }
+    return fulled;
+}
+
+int isEmpty(Queue q){
+    return (q->size==0);
+}
+
+Element Deque(Queue q){
+    Element e;
+    if (q->size==0)
+    {
+        printf("No Elements to Deque\n");
+        exit(0);
+    }
+    else
+    {
+        Node temp = q->Front;
+        q->Front = q->Front->next;
+        e = temp->data  ;
+        free(temp);
+        q->size--;
+    }
+    
+    return e;
+}
+void printQueue(Queue q){
+    
 }
