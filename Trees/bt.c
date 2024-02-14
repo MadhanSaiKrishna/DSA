@@ -3,9 +3,18 @@
 #include <assert.h>
 #include <stdbool.h>
 
-#include "binarytree.h"
-#include "stack.h"
-#include "queue.h"
+typedef int Element;
+
+struct stTreeNode
+{
+    Element e;
+    struct stTreeNode *left;
+    struct stTreeNode *right;
+};
+
+typedef struct stTreeNode *BST;
+typedef BST BinTree;
+typedef BinTree Position;
 
 // Creating a Binary Search Tree without the case of duplicate elements
 
@@ -35,6 +44,27 @@ BinTree Insert(BinTree T, Element x)
         T->right = Insert(T->right, x);
     }
     return T;
+}
+
+BinTree Insert_iterative(BinTree T, int x)
+{
+    if (T==NULL)
+    {
+        return MakeNode(x);
+    }
+    while (T!=NULL)
+    {
+        if (x<T->left->e)
+        {
+            T =  T->left;
+        }
+        else if (x>T->right->e)
+        {
+            T = T->right;
+        }        
+    }
+    T = MakeNode(x);
+    return T;    
 }
 
 void preOrderTraversal_rec(BinTree T)
@@ -223,16 +253,6 @@ bool isIdentical(BinTree T1, BinTree T2)
     
     //Data should be same in the current Node and the left and right subtrees should be identical
     return (T1->e==T2->e) && (isIdentical(T1->left, T2->left)) && ((isIdentical(T1->right, T2->right)));
-}
-
-bool isBST(BinTree T)
-{
-    if (T== NULL)
-    {
-        return true;
-    }
-
-    
 }
 
 int main()
