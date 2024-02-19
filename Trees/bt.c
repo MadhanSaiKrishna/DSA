@@ -232,14 +232,6 @@ int NumOfInternalNodes(BinTree T)
     return 1 + NumOfInternalNodes(T->left) + NumOfInternalNodes(T->right);
 }
 
-BinTree delete(BinTree T, int x)
-{
-    if (T == NULL)
-    {
-        return NULL;
-    }
-}
-
 bool isIdentical(BinTree T1, BinTree T2)
 {
     if (T1==NULL && T2 == NULL)
