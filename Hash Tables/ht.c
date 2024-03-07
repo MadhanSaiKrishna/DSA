@@ -25,7 +25,10 @@ struct stHt
 
 typedef struct stHt *HashTable;
 
-Key getHash(Element e, HashTable myHt);
+Key getHash(Element e, HashTable myHt)
+{
+    
+}
 
 HashTable createHashTable(int iTablesize)
 {
@@ -74,7 +77,51 @@ Node FindInTable(Element e, HashTable myHt)
     
 }
 
+void EmptyTable(HashTable myHt)
+{
+    if (myHt == NULL)
+    {
+        return;
+    }
+    Node curr;
+    Node next;
+    for (int i = 0; i < myHt->size; i++)
+    {
+        curr = myHt->pstart[i];
+        while (curr!=NULL)
+        {
+            next = curr->next;
+            free(curr);
+            curr = next;
+        }
+        myHt->pstart[i]->next = NULL;
+    }
+    return;
+}
 
+void DeleteTable(HashTable myHt)
+{
+    if (myHt == NULL)
+    {
+        return;
+    }
+    Node curr;
+    Node next;
+    for (int i = 0; i < myHt->size; i++)
+    {
+        curr = myHt->pstart[i];
+        while (curr!=NULL)
+        {
+            next = curr->next;
+            free(curr);
+            curr = next;
+        }
+        myHt->pstart[i] = NULL;
+    }
+    free(myHt->pstart);
+    free(myHt);
+    return;    
+}
 
 int main()
 {
