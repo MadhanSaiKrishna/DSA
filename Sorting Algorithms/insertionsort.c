@@ -13,7 +13,7 @@ void InsertionSort(ElementTypePtr A, int numElements)
     for (int i = 0; i < numElements; i++)
     {
         curr = A[i];
-        for (int j = i; j>=-1 && curr<A[j-1]; j--)
+        for (int j = i; j>0 && curr<A[j-1]; j--)
         {
             A[j] = A[j-1];
         }
